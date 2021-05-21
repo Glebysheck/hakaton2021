@@ -9,6 +9,6 @@ class Users extends Model
 {
     public function posters(): HasMany
     {
-        return $this->hasMany(Posterslist::class);
+        return $this->hasMany(PostersList::class);
     }
 }
