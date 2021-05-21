@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Comments extends Model
 {
-    public function post(): BelongsTo
+    public function users(): HasMany
     {
-        return $this->belongsTo(Detail_Poster::class);
+        return $this->hasMany(Users::class);
     }
 }
