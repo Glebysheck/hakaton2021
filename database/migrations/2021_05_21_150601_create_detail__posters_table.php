@@ -14,11 +14,13 @@ class CreateDetailPostersTable extends Migration
     public function up()
     {
         Schema::create('detail__posters', function (Blueprint $table) {
-            $table->id();
-            $table->char('name');
-            $table->date('date');
+            $table->bigInteger('id');
+            $table->char('title');
+            $table->date('date_lower');
+            $table->date('date_upper');
             $table->integer('price');
             $table->char('image');
+            $table->char('address');
             $table->timestamps();
         });
     }

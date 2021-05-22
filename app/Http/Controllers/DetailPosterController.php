@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Components\ImportDataHttpClient;
+use App\Models\DetailPoster;
 use Illuminate\Http\Client\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -17,6 +18,20 @@ class DetailPosterController extends Controller
     {
         $imp = new ImportDataHttpClient();
         $response = $imp->client->request('GET', 'posters');
-        return $response->getBody()->getContents();
+        $data = json_decode($response->getBody()->getContents());
+        $data_2 = $data->results;
+
+        foreach ($data_2 as $item)
+        {
+            DetailPoster::create([
+                'id' => $item->id,
+                'title' => $item->title,
+                'price' => $item->price,
+                'image' => $item->image,
+                'address' => $item->address,
+                'date_lower' => $item->date->lower,
+                'date_upper' => $item->date->upper,
+            ]);
+        }
     }
 }

@@ -11,8 +11,4 @@ class DetailPoster extends Model
     {
         return $this->hasMany(Categories::class);
     }
-    public function adres(): HasMany
-    {
-        return $this->hasMany(Adres::class);
-    }
 }
