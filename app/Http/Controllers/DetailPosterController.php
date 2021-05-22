@@ -16,23 +16,33 @@ class DetailPosterController extends Controller
      */
     public function store()
     {
-        $imp = new ImportDataHttpClient();
-        $response = $imp->client->request('GET', 'posters');
-        $data = json_decode($response->getBody()->getContents());
-        $data_2 = $data->results;
-
-        foreach ($data_2 as $item)
+        $i = 1;
+        while (true)
         {
-            DetailPoster::create([
-                'id' => $item->id,
-                'title' => $item->title,
-                'price' => $item->price,
-                'image' => $item->image,
-                'address' => $item->address,
-                'category_id' => $item->categories->id,
-                'date_lower' => $item->date->lower,
-                'date_upper' => $item->date->upper,
-            ]);
+            $imp = new ImportDataHttpClient();
+            if ($i < 2)
+                $response = $imp->client->request('GET', 'posters');
+            elseif (5 > $i)
+                $response = $imp->client->request('GET', "posters/?page=$i");
+            else
+                break;
+            $data = json_decode($response->getBody()->getContents());
+            $data_2 = $data->results;
+
+            foreach ($data_2 as $item)
+            {
+                DetailPoster::firstOrCreate(['id' => $item->id],[
+                    'id' => $item->id,
+                    'title' => $item->title,
+                    'price' => $item->price,
+                    'image' => $item->image,
+                    'address' => $item->address,
+                    'category_id' => $item->categories->id,
+                    'date_lower' => $item->date->lower,
+                    'date_upper' => $item->date->upper
+                ]);
+            }
+            $i++;
         }
     }
 }
