@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\PosterController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DetailPosterController;
 use Illuminate\Support\Facades\Route;
@@ -24,4 +25,7 @@ Route::resource('fame', DetailPosterController::class);
 Route::group(['namespace' => 'app\Http\Controllers'], function () {
     Route::get('/category', [CategoriesController::class, 'store']);
     Route::get('/posters', [DetailPosterController::class, 'store']);
+    Route::get('/sh', [DetailPosterController::class, 'show']);
 });
+
+Route::get('/download',[PosterController::class, 'downloadJSON']);

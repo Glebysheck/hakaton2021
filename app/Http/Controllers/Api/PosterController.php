@@ -13,14 +13,45 @@ class PosterController extends Controller
         return DetailPoster::all();
     }
 
-    public function hundex()
+    public function sort_in_descending_order_of_price()
     {
-        $massiv = [];
+        return DetailPoster::orderBy('price', 'desc')->get();
+    }
+
+    public function sort_in_ascending_order_of_price()
+    {
+        return DetailPoster::orderBy('price', 'asc')->get();
+    }
+
+    public function sort_in_descending_order_of_date()
+    {
+        return DetailPoster::orderBy('date_lower', 'desc')->get();
+    }
+
+    public function sort_in_ascending_order_of_date()
+    {
+        return DetailPoster::orderBy('date_lower', 'asc')->get();
+    }
+
+    public function search_by_address(Request $request): array
+    {
+        $arr = [];
         foreach (DetailPoster::all() as $item)
         {
-            $massiv[$item->id]=$item->price;
+            if (false !== strpos($item->address, $request))
+                $arr[] = $item;
         }
-        asort($massiv);
-        return $massiv;
+        return $arr;
+    }
+
+    public function search_by_title(Request $request): array
+    {
+        $arr = [];
+        foreach (DetailPoster::all() as $item)
+        {
+            if (false !== strpos($item->title, $request))
+                $arr[] = $item;
+        }
+        return $arr;
     }
 }
