@@ -14,16 +14,16 @@ class CategoriesController extends Controller
     public function store()
     {
         $imp = new ImportDataHttpClient();
-        $response = $imp->client->request('GET', 'categories');
+        $response = $imp->client->request('GET', 'categories/');
         $data = json_decode($response->getBody()->getContents());
 
         foreach ($data as $item)
         {
-            Categories::create([
+            Categories::firstOrCreate(['id' => $item->id],[
                 'id' => $item->id,
                 'title' => $item->title,
-                'image' => $item->image,
                 'description' => $item->description,
+                'image' => $item->image
             ]);
         }
     }

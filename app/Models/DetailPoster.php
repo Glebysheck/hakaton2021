@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DetailPoster extends Model
 {
-    public function categories(): HasMany
+    public function category(): BelongsTo
     {
-        return $this->hasMany(Categories::class);
+        return $this->belongsTo(Categories::class, 'category_id', 'id');
     }
+    protected $fillable = ['id', 'title', 'date_lower', 'date_upper', 'price', 'category_id', 'image', 'address'];
 }
