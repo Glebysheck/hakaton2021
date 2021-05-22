@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->char('name');
             $table->char('email');
             $table->char('password');
-            $table->foreignId('detail_posters_id')->constrained()->onDelete('cascade');
+            $table->char('api_token');
             $table->timestamps();
         });
     }

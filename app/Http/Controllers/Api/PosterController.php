@@ -12,4 +12,15 @@ class PosterController extends Controller
     {
         return DetailPoster::all();
     }
+
+    public function hundex()
+    {
+        $massiv = [];
+        foreach (DetailPoster::all() as $item)
+        {
+            $massiv[$item->id]=$item->price;
+        }
+        asort($massiv);
+        return $massiv;
+    }
 }

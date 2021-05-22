@@ -7,9 +7,5 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Users extends Model
 {
-    public function detailposters(): HasMany
-    {
-        return $this->hasMany(DetailPoster::class);
-    }
-    protected $fillable = ['id', 'name', 'email', 'password'];
+    protected $fillable = ['id', 'name', 'email', 'password', 'api_token'];
 }

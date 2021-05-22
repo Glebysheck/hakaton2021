@@ -21,5 +21,5 @@ Route::middleware('auth:api')->get('user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/posters', [PosterController::class, 'index']);
+Route::get('/posters', [PosterController::class, 'hundex']);
 Route::get('/categories', [CategoryController::class, 'index']);

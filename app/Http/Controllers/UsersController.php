@@ -12,6 +12,7 @@ class UsersController extends Controller
             'name'=>$request->input('name'),
             'email'=>$request->input('email'),
             'password'=>$request->input('password'),
+            'api_token'=>$request->input('api_token'),
         ]);
     }
 }

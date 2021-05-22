@@ -7,10 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DetailPoster extends Model
 {
-    public function users(): BelongsTo
-    {
-        return $this->belongsTo(Users::class, 'detail_posters_id', 'id');
-    }
     public function category(): BelongsTo
     {
         return $this->belongsTo(Categories::class, 'category_id', 'id');
