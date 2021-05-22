@@ -14,7 +14,7 @@ class DetailPosterController extends Controller
     /**
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function index(): string
+    public function store()
     {
         $imp = new ImportDataHttpClient();
         $response = $imp->client->request('GET', 'posters');
@@ -29,6 +29,7 @@ class DetailPosterController extends Controller
                 'price' => $item->price,
                 'image' => $item->image,
                 'address' => $item->address,
+                'category_id' => $item->categories->id,
                 'date_lower' => $item->date->lower,
                 'date_upper' => $item->date->upper,
             ]);

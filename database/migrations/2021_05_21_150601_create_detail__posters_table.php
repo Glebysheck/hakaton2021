@@ -19,6 +19,7 @@ class CreateDetailPostersTable extends Migration
             $table->date('date_lower');
             $table->date('date_upper');
             $table->integer('price');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->char('image');
             $table->char('address');
             $table->timestamps();
