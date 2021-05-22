@@ -23,3 +23,9 @@ Route::middleware('auth:api')->get('user', function (Request $request) {
 
 Route::get('/posters', [PosterController::class, 'search_by_address']);
 Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/sort_in_descending_order_of_price', [PosterController::class, 'sort_in_descending_order_of_price']);
+Route::get('/sort_in_ascending_order_of_price', [PosterController::class, 'sort_in_ascending_order_of_price']);
+Route::get('/sort_in_descending_order_of_date', [PosterController::class, 'sort_in_descending_order_of_date']);
+Route::get('/sort_in_ascending_order_of_date', [PosterController::class, 'sort_in_ascending_order_of_date']);
+Route::get('/search_by_title', [PosterController::class, 'search_by_title']);
+
