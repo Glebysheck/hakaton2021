@@ -11,6 +11,7 @@ class CreateDetailPostersTable extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::create('detail_posters', function (Blueprint $table) {
@@ -19,7 +20,7 @@ class CreateDetailPostersTable extends Migration
             $table->dateTime('date_lower');
             $table->dateTime('date_upper');
             $table->integer('price');
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->string('category');
             $table->string('image')->nullable();
             $table->string('address');
             $table->timestamps();
@@ -31,6 +32,7 @@ class CreateDetailPostersTable extends Migration
      *
      * @return void
      */
+
     public function down()
     {
         Schema::dropIfExists('detail_posters');

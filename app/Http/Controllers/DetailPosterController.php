@@ -37,7 +37,7 @@ class DetailPosterController extends Controller
                     'price' => $item->price,
                     'image' => $item->image,
                     'address' => $item->address,
-                    'category_id' => $item->categories->id,
+                    'category' => $item->categories->title,
                     'date_lower' => $item->date->lower,
                     'date_upper' => $item->date->upper
                 ]);

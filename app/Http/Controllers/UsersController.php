@@ -16,7 +16,6 @@ class UsersController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'api_token' => Str::random(80),
-            'api_token'=>$request->input('api_token'),
         ]);
     }
 }

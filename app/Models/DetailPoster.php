@@ -9,7 +9,7 @@ class DetailPoster extends Model
 {
     public function category(): BelongsTo
     {
-        return $this->belongsTo(Categories::class, 'category_id', 'id');
+        return $this->belongsTo(Categories::class, 'category', 'title');
     }
-    protected $fillable = ['id', 'title', 'date_lower', 'date_upper', 'price', 'category_id', 'image', 'address'];
+    protected $fillable = ['id', 'title', 'date_lower', 'date_upper', 'price', 'category', 'image', 'address'];
 }

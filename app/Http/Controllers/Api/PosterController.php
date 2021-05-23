@@ -54,4 +54,81 @@ class PosterController extends Controller
         }
         return $arr;
     }
+
+    public function sort_by_category_movie(): array
+    {
+        $arr = [];
+        foreach (DetailPoster::orderBy('date_lower', 'asc')->get() as $item)
+        {
+            if (2 == $item->category_id)
+                $arr[] = $item;
+        }
+        return $arr;
+    }
+
+    public function sort_by_category_concert(): array
+    {
+        $arr = [];
+        foreach (DetailPoster::orderBy('date_lower', 'asc')->get() as $item)
+        {
+            if (1 == $item->category_id)
+                $arr[] = $item;
+        }
+        return $arr;
+    }
+
+    public function sort_by_category_performance(): array
+    {
+        $arr = [];
+        foreach (DetailPoster::orderBy('date_lower', 'asc')->get() as $item)
+        {
+            if (3 == $item->category_id)
+                $arr[] = $item;
+        }
+        return $arr;
+    }
+
+    public function sort_by_category_exhibitions(): array
+    {
+        $arr = [];
+        foreach (DetailPoster::orderBy('date_lower', 'asc')->get() as $item)
+        {
+            if (4 == $item->category_id)
+                $arr[] = $item;
+        }
+        return $arr;
+    }
+
+    public function sort_by_category_libraries(): array
+    {
+        $arr = [];
+        foreach (DetailPoster::orderBy('date_lower', 'asc')->get() as $item)
+        {
+            if (5 == $item->category_id)
+                $arr[] = $item;
+        }
+        return $arr;
+    }
+
+    public function sort_by_category_festivals(): array
+    {
+        $arr = [];
+        foreach (DetailPoster::orderBy('date_lower', 'asc')->get() as $item)
+        {
+            if (6 == $item->category_id)
+                $arr[] = $item;
+        }
+        return $arr;
+    }
+
+    public function sort_by_category_museums(): array
+    {
+        $arr = [];
+        foreach (DetailPoster::orderBy('date_lower', 'asc')->get() as $item)
+        {
+            if (7 == $item->category_id)
+                $arr[] = $item;
+        }
+        return $arr;
+    }
 }
