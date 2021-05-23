@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Http\Controllers\DetailPosterController;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -22,9 +23,13 @@ class Kernel extends ConsoleKernel
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
+
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(function () {
+            $controller = new DetailPosterController();
+            $controller->store();
+        })->daily();
     }
 
     /**
@@ -32,6 +37,7 @@ class Kernel extends ConsoleKernel
      *
      * @return void
      */
+
     protected function commands()
     {
         $this->load(__DIR__.'/Commands');

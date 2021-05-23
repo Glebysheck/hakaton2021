@@ -4,10 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Components\ImportDataHttpClient;
 use App\Models\DetailPoster;
-use Illuminate\Http\Client\Response;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-use Psr\Http\Message\ResponseInterface;
 
 class DetailPosterController extends Controller
 {
