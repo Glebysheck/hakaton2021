@@ -9,12 +9,12 @@ use Illuminate\Support\Str;
 
 class UsersController extends Controller
 {
-    protected function create(array $data)
+    protected function create(Request $request)
     {
         return Users::forceCreate([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
             'api_token' => Str::random(80),
         ]);
     }

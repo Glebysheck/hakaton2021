@@ -22,7 +22,7 @@ class DetailPosterController extends Controller
             $imp = new ImportDataHttpClient();
             if ($i < 2)
                 $response = $imp->client->request('GET', 'posters');
-            elseif (5 > $i)
+            elseif (5 >= $i)
                 $response = $imp->client->request('GET', "posters/?page=$i");
             else
                 break;
@@ -31,16 +31,30 @@ class DetailPosterController extends Controller
 
             foreach ($data_2 as $item)
             {
-                DetailPoster::firstOrCreate(['id' => $item->id],[
-                    'id' => $item->id,
-                    'title' => $item->title,
-                    'price' => $item->price,
-                    'image' => $item->image,
-                    'address' => $item->address,
-                    'category' => $item->categories->title,
-                    'date_lower' => $item->date->lower,
-                    'date_upper' => $item->date->upper
-                ]);
+                if ($item->date == null)
+                {
+                    DetailPoster::firstOrCreate(['id' => $item->id],[
+                        'id' => $item->id,
+                        'title' => $item->title,
+                        'price' => $item->price,
+                        'image' => $item->image,
+                        'address' => $item->address,
+                        'category' => $item->categories->title,
+                    ]);
+                }
+                else
+                {
+                    DetailPoster::firstOrCreate(['id' => $item->id],[
+                        'id' => $item->id,
+                        'title' => $item->title,
+                        'price' => $item->price,
+                        'image' => $item->image,
+                        'address' => $item->address,
+                        'category' => $item->categories->title,
+                        'date_lower' => $item->date->lower,
+                        'date_upper' => $item->date->upper
+                    ]);
+                }
             }
             $i++;
         }

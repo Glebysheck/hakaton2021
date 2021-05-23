@@ -17,8 +17,8 @@ class CreateDetailPostersTable extends Migration
         Schema::create('detail_posters', function (Blueprint $table) {
             $table->bigInteger('id');
             $table->string('title');
-            $table->dateTime('date_lower');
-            $table->dateTime('date_upper');
+            $table->dateTime('date_lower')->nullable();
+            $table->dateTime('date_upper')->nullable();
             $table->integer('price');
             $table->string('category');
             $table->string('image')->nullable();
