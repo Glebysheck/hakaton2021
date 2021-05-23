@@ -26,5 +26,3 @@ Route::group(['namespace' => 'app\Http\Controllers'], function () {
     Route::get('/category', [CategoriesController::class, 'store']);
     Route::get('/posters', [DetailPosterController::class, 'store']);
 });
-
-Route::get('/download',[PosterController::class, 'downloadJSON']);
